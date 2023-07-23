@@ -19,12 +19,12 @@ end
 
 def sum_to_n? arr, n
   len = arr.length()
-  (0..len-1).each do |i|
-    (i+1..len).each do |j|
-      return true if arr.at(i)+arr.at(j)==n
+  (0..len-2).each do |i|
+    (i+1..len-1).each do |j|
+      return true if arr.at(i) + arr.at(j) == n
     end
   end
-return false
+  return false
 end
 
 # Part 2
@@ -65,4 +65,3 @@ class BookInStock
     format('$%.2f', price)
   end
 end
-
