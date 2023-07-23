@@ -34,21 +34,35 @@ def hello(name)
 end
 
 def starts_with_consonant? s
-  vowels = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'y', 'z','V']
+  vowels = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'y', 'z']
   vowels.each do |i|
-    if s[0] == i
+    if s[0] == i or s[0] == i.upcase
       return true
     end
   end
 return false
 end
 
-def binary_multiple_of_4? s
-  
+def binary_multiple_of_4?(s)
+  return false unless s.match?(/^[01]+$/)
+return s.to_i(2) % 4 == 0
 end
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  attr_accessor :isbn, :price
+
+  def initialize(isbn, price)
+    raise ArgumentError, 'ISBN number cannot be empty' if isbn.empty?
+    raise ArgumentError, 'Price must be greater than zero' if price <= 0
+
+    @isbn = isbn
+    @price = price
+  end
+
+  def price_as_string
+    format('$%.2f', price)
+  end
 end
+
